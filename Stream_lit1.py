@@ -57,7 +57,7 @@ def main():
 			img = Image.open("Setosa.jpeg")
 			st.image(img, width=300)
 		elif result == 1:
-			t.success('The output is Versicolor')
+			st.success('The output is Versicolor')
 			img = Image.open("Versicolor.jpg")
 			st.image(img, width=300)
 		else:
