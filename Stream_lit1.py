@@ -15,16 +15,16 @@ def plot():
 	df = pd.read_csv(url, names=column_names)
 	# Draw a pairplot to visualize the relationships between variables
 	st.subheader('Pairplot of Iris Dataset')
-	fig = sns.pairplot(df, hue='species')
+	fig = sns.pairplot(df, hue='class')
 	st.pyplot(fig)
 
     # Draw a violin plot for each species
 	st.subheader('Violin Plots of Sepal and Petal Dimensions Grouped by Species')
 	fig, axs = plt.subplots(2, 2)
-	sns.violinplot(x='species', y='sepal_length', data=df, ax=axs[0, 0])
-	sns.violinplot(x='species', y='sepal_width', data=df, ax=axs[0, 1])
-	sns.violinplot(x='species', y='petal_length', data=df, ax=axs[1, 0])
-	sns.violinplot(x='species', y='petal_width', data=df, ax=axs[1, 1])
+	sns.violinplot(x='class', y='sepal_length', data=df, ax=axs[0, 0])
+	sns.violinplot(x='class', y='sepal_width', data=df, ax=axs[0, 1])
+	sns.violinplot(x='class', y='petal_length', data=df, ax=axs[1, 0])
+	sns.violinplot(x='class', y='petal_width', data=df, ax=axs[1, 1])
 	st.pyplot(fig)
 
 def welcome(): 
