@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np 
+import seaborn as sns
 import pickle 
 import streamlit as st 
 from PIL import Image 
@@ -7,6 +8,24 @@ from PIL import Image
 # loading in the model to predict on the data 
 pickle_in = open('classifier.pkl', 'rb') 
 classifier = pickle.load(pickle_in) 
+
+def plot():
+	url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+	column_names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
+	df = pd.read_csv(url, names=column_names)
+	# Draw a pairplot to visualize the relationships between variables
+	st.subheader('Pairplot of Iris Dataset')
+	fig = sns.pairplot(df, hue='species')
+	st.pyplot(fig)
+
+    # Draw a violin plot for each species
+	st.subheader('Violin Plots of Sepal and Petal Dimensions Grouped by Species')
+	fig, axs = plt.subplots(2, 2)
+	sns.violinplot(x='species', y='sepal_length', data=df, ax=axs[0, 0])
+	sns.violinplot(x='species', y='sepal_width', data=df, ax=axs[0, 1])
+	sns.violinplot(x='species', y='petal_length', data=df, ax=axs[1, 0])
+	sns.violinplot(x='species', y='petal_width', data=df, ax=axs[1, 1])
+	st.pyplot(fig)
 
 def welcome(): 
 	return 'welcome all'
@@ -34,6 +53,8 @@ def main():
 	</div> 
 	"""
 	
+	plot()
+
 	# this line allows us to display the front end aspects we have 
 	# defined in the above code 
 	st.markdown(html_temp, unsafe_allow_html = True) 
