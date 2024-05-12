@@ -3,7 +3,9 @@ import numpy as np
 import seaborn as sns
 import pickle 
 import streamlit as st 
+import matplotlib as plt
 from PIL import Image 
+
 
 # loading in the model to predict on the data 
 pickle_in = open('classifier.pkl', 'rb') 
