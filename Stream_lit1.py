@@ -88,6 +88,8 @@ def main():
 			mg = Image.open("Virginica.jpeg")
 			st.image(img, width=300)
 
+st.write("M Anbazhagan")
+
 	
 if __name__=='__main__': 
 	main() 
